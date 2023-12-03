@@ -1,0 +1,44 @@
+﻿@model Employee
+@{
+    ViewData["Title"] = "Update Employee Info ";
+}
+
+<h3>@ViewData["Title"]</h3>
+<hr />
+<form asp-action="Edit">
+    <input type="hidden" asp-for="Id" />
+    <div class="container">
+        <div class="mb-3">
+            <label asp-for="Name" class="form-label"></label>
+            <input asp-for="Name" class="form-control" type="text" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Email" class="form-label"></label>
+            <input asp-for="Email" class="form-control" type="email" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Address" class="form-label"></label>
+            <textarea asp-for="Address" class="form-control" rows="5" cols="40"></</textarea>
+            <span asp-validation-for="Address" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="PhoneNo" class="form-label"></label>
+            <input asp-for="PhoneNo" class="form-control" type="text" />
+            <span asp-validation-for="PhoneNo" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Department </label>
+            <select asp-for="DepartmentID" class="form-control" asp-items="ViewBag.Departments">
+                <option>-- Select Department --</option>
+            </select>
+            <span asp-validation-for="DepartmentID" class="text-danger"></span>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary btn-sm">Update</button>
+            <a asp-action="Index" class="btn btn-warning btn-sm">Back to List</a>
+        </div>
+    </div>
+</form>
+

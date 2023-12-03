@@ -1,0 +1,49 @@
+﻿@model IEnumerable<MyTraining2.Models.Employee>
+
+@{
+    ViewData["Title"] = "Employee List";
+}
+
+<h3>@ViewData["Title"]</h3>
+<p>
+    <a asp-action="Create" class="btn btn-success btn-sm">Add New Employee</a>
+</p>
+
+<table class="table table-bordered tabletable-responsive table-hover">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Name)</th>
+            <th>@Html.DisplayNameFor(model => model.Email)</th>
+            <th>@Html.DisplayNameFor(model => model.PhoneNo)</th>
+            <th>@Html.DisplayNameFor(model => model.Departments.Name)</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if(Model != null && Model.Any())
+        {
+            @foreach (var employee in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(model => employee.Name)</td>
+                    <td>@Html.DisplayFor(model => employee.Email)</td>
+                    <td>@Html.DisplayFor(model => employee.PhoneNo)</td>
+                    <td>@Html.DisplayFor(model => employee.Departments.Name)</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@employee.Id" class="btn btn-warning btn-sm">Edit</a>
+                        <a asp-action="Detail" asp-route-id="@employee.Id" class="btn btn-success btn-sm">Details</a>
+                        <a asp-action="Delete" asp-route-id="@employee.Id" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="5">No Record Found</td>
+            </tr>
+        }
+        
+    </tbody>
+</table>
+
