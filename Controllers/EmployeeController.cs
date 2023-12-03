@@ -38,14 +38,10 @@ namespace MyTraining2.Controllers
         [HttpPost]
         public IActionResult Create(Employee model)
         {
-            if (ModelState.IsValid) 
-            {
                 _context.Employees.Add(model);
                 _context.SaveChanges();
                 return RedirectToAction("Index");
-            }
-
-            return View();
+            
         }
 
         [HttpGet]
